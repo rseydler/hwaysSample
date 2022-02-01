@@ -54,7 +54,7 @@ const App: React.FC = () => {
       if (urlParams.has("iTwinId")) {
         setITwinId(urlParams.get("iTwinId") as string);
       } else {
-        if (!process.env.IMJS_ITWIN_ID) {
+        if (!iTwinId) {
           throw new Error(
             "Please add a valid iTwin ID in the .env file and restart the application or add it to the iTwinId query parameter in the url and refresh the page. See the README for more information."
           );
@@ -64,7 +64,7 @@ const App: React.FC = () => {
       if (urlParams.has("iModelId")) {
         setIModelId(urlParams.get("iModelId") as string);
       } else {
-        if (!process.env.IMJS_IMODEL_ID) {
+        if (!iModelId) {
           throw new Error(
             "Please add a valid iModel ID in the .env file and restart the application or add it to the iModelId query parameter in the url and refresh the page. See the README for more information."
           );
