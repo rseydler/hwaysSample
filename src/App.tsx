@@ -15,21 +15,23 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { history } from "./history";
 
+import {highwaysDecorator} from "./decorators";
+
 const App: React.FC = () => {
-  const [iModelId, setIModelId] = useState(process.env.IMJS_IMODEL_ID);
-  const [iTwinId, setITwinId] = useState(process.env.IMJS_ITWIN_ID);
+  const [iModelId, setIModelId] = useState("7412a95b-e63a-4791-af10-4e5e84ef6493");
+  const [iTwinId, setITwinId] = useState("15bbbf95-06d8-46c5-af72-6b5a590071dc");
 
   const accessToken = useAccessToken();
 
   const authClient = useMemo(
     () =>
       new BrowserAuthorizationClient({
-        scope: process.env.IMJS_AUTH_CLIENT_SCOPES ?? "",
-        clientId: process.env.IMJS_AUTH_CLIENT_CLIENT_ID ?? "",
-        redirectUri: process.env.IMJS_AUTH_CLIENT_REDIRECT_URI ?? "",
-        postSignoutRedirectUri: process.env.IMJS_AUTH_CLIENT_LOGOUT_URI,
+        scope: "itwinjs imodelaccess:read imodels:read realitydata:read",
+        clientId: "spa-jKSUl0PJUnxhjqSPa5uKMlymj",
+        redirectUri: `${window.location.origin}/auth`,
+        postSignoutRedirectUri: `${window.location.origin}/auth`,
         responseType: "code",
-        authority: process.env.IMJS_AUTH_AUTHORITY,
+        authority: "https://ims.bentley.com",
       }),
     []
   );
@@ -102,8 +104,9 @@ const App: React.FC = () => {
     };
 
     tileTreesLoaded().finally(() => {
-      void IModelApp.tools.run(FitViewTool.toolId, viewPort, true, false);
-      viewPort.view.setStandardRotation(StandardViewId.Iso);
+      //void IModelApp.tools.run(FitViewTool.toolId, viewPort, true, false);
+      //viewPort.view.setStandardRotation(StandardViewId.Iso);
+      IModelApp.viewManager.addDecorator(new highwaysDecorator(viewPort));
     });
   }, []);
 
