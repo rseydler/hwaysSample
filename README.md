@@ -4,27 +4,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Environment Variables
 
-Prior to running the app, you will need to add OIDC client configuration to the variables in the .env file:
+The env file has been removed. Please update the index.tsx file 
+        const redirectUrl = new URL(`${window.location.origin}/auth`);
+and the app.tsx file
+        const [iModelId, setIModelId] = useState("7412a95b-e63a-4791-af10-4e5e84ef6493");
+        const [iTwinId, setITwinId] = useState("15bbbf95-06d8-46c5-af72-6b5a590071dc");
+and
+        scope: "itwinjs imodelaccess:read imodels:read realitydata:read",
+        clientId: "spa-jKSUl0PJUnxhjqSPa5uKMlymj",
+        redirectUri: `${window.location.origin}/auth`,
+        postSignoutRedirectUri: `${window.location.origin}/auth`,
+as required.
 
-```
-# ---- Authorization Client Settings ----
-IMJS_AUTH_CLIENT_CLIENT_ID=""
-IMJS_AUTH_CLIENT_REDIRECT_URI=""
-IMJS_AUTH_CLIENT_LOGOUT_URI=""
-IMJS_AUTH_CLIENT_SCOPES =""
-```
 
-- You can generate a [test client](https://developer.bentley.com/tutorials/web-application-quick-start/#2-register-an-application) to get started.
-
-- When you are ready to build a production application, [register here](https://developer.bentley.com/register/).
-
-You should also add a valid iTwinId and iModelId for your user in the this file:
-
-```
-# ---- Test ids ----
-IMJS_ITWIN_ID = ""
-IMJS_IMODEL_ID = ""
-```
 
 - For the IMJS_ITWIN_ID variable, you can use the id of one of your existing Projects or Assets. You can obtain their ids via the [Administration REST APIs](https://developer.bentley.com/api-groups/administration/api-reference/).
 
@@ -80,3 +72,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [Using the iTwin Platform](https://developer.bentley.com/)
 
 - [iTwin Developer Program](https://www.youtube.com/playlist?list=PL6YCKeNfXXd_dXq4u9vtSFfsP3OTVcL8N)
+
+# MIT License
+Copyright © Bentley Systems, Incorporated. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

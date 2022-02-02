@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+
 import {BeButtonEvent, IModelApp, Marker, NotifyMessageDetails, OutputMessageAlert, OutputMessagePriority} from "@itwin/core-frontend";
 import { XAndY, XYAndZ } from "@itwin/core-geometry";
 

@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+
 import { QueryRowFormat } from "@itwin/core-common";
 import {Decorator,  ScreenViewport, IModelConnection, DecorateContext, Marker } from "@itwin/core-frontend";
 import {highwaysMarker} from "./markers"
@@ -27,7 +33,7 @@ export class highwaysDecorator implements Decorator{
         return values;
     }
 
-    
+
     private async addMarkers(){
         const values = await this.getCameras();
         values.forEach(value => {
