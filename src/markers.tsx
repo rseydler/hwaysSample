@@ -9,11 +9,13 @@ export class highwaysMarker extends Marker{
         this._cameraId = cameraId;
 
         this.setImageUrl("/cam.png");
+        // highways images
         const htmlElement = document.createElement("img");
         htmlElement.src='https://public.highwaystrafficcameras.co.uk/cctvpublicaccess/images/12011.jpg'; //need to use the camera id here but not present in the iModel :(
         this.title = htmlElement;
     }
 
+    //when you click the marker it pops up the standard highways camera popup
     public onMouseButton(_ev: BeButtonEvent): boolean{
         if (!_ev.isDown) return true;
         //need to use the camera id here but not present :(

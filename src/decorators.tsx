@@ -14,6 +14,7 @@ export class highwaysDecorator implements Decorator{
         this.addMarkers();
     }
 
+    //pull the camera element data from the imodel
     private async getCameras(){
         const query = "SELECT UserLabel, Origin from BisCore. PhysicalElement where userlabel like '%camera%' and Origin IS NOT NULL";
 
@@ -26,6 +27,7 @@ export class highwaysDecorator implements Decorator{
         return values;
     }
 
+    
     private async addMarkers(){
         const values = await this.getCameras();
         values.forEach(value => {
